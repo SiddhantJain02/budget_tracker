@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/transactionView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".AddTransactionActivity">
+
+    <ImageButton
+        android:id="@+id/closeBtn"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_margin="12dp"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/close_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/labelLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColorHint="#D5D5D5"
+            android:background="@color/black"
+            app:boxBackgroundColor="#1C1A1A"
+            android:hint="Label"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/labelInput"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/label_selector"
+                android:drawablePadding="12dp"
+                android:maxLines="1"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/amountLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@color/black"
+            app:boxBackgroundColor="#1C1A1A"
+            android:textColorHint="#D5D5D5"
+            android:hint="Amount"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/amountInput"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/rupee_selector"
+                android:drawablePadding="23dp"
+                android:maxLines="1"
+                android:inputType="numberSigned|numberDecimal"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/descriptionLayout"
+            android:visibility="gone"
+            android:textColorHint="#D5D5D5"
+            android:background="@color/black"
+            app:boxBackgroundColor="#1C1A1A"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:hint="Description"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/descriptionInput"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/description_selector"
+                android:drawablePadding="12dp"
+                android:maxLines="1"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/tagLayout"
+            android:background="@color/black"
+            android:hapticFeedbackEnabled="true"
+            android:textColorHint="#D5D5D5"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_height="match_parent"
+            app:boxBackgroundColor="#535353"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:gravity="center"
+            android:hint="Tags"
+            app:errorEnabled="true">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/autoComplete"
+                android:background="@color/white"
+                android:inputType="none"
+                android:layout_weight="1"
+                android:textColor="#FFFFFF"
+                android:paddingLeft="16dp"
+                android:drawableStart="@drawable/tag_selector"
+                android:drawablePadding="12dp"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_marginBottom="80dp"
+                android:id="@+id/addTransactionBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Budget"
+                android:padding="12dp"
+                android:layout_weight="0.5"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:textColor="@color/white"
+                android:backgroundTint="#E91DAA23"/>
+
+            <Button
+                android:layout_marginBottom="80dp"
+                android:id="@+id/addExpenseBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Expense"
+                android:layout_weight="0.5"
+                android:padding="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/red"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

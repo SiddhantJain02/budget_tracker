@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Budget Tracker</string>
+    <string name="new_title"><b>Expenses</b></string>
+
+    <string-array name="tags">
+        <item>Food</item>
+        <item>Necessity</item>
+        <item>Clothing</item>
+        <item>Budget</item>
+        <item>Travel</item>
+        <item>Entertainment</item>
+    </string-array>
+</resources>
