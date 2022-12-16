@@ -83,7 +83,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                deleteTransaction(transactions[viewHolder.adapterPosition])
+                var position = viewHolder.adapterPosition
+                var tot = transactions.size
+                position = tot - position - 1
+
+                deleteTransaction(transactions[position])
             }
         }
 

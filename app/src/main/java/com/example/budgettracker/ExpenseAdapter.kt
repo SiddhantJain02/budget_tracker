@@ -25,7 +25,10 @@ class ExpenseAdapter(private var transactions: List<Transaction>) :
     }
 
     override fun onBindViewHolder(holder: ExpenseHolder, position: Int) {
-        val expense = transactions[position]
+
+        val pos: Int = transactions.size - 1 - position
+
+        val expense = transactions[pos]
         val context = holder.amount.context
 
 

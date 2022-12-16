@@ -28,7 +28,10 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
     }
 
     override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
-        val transaction = transactions[position]
+
+        val pos: Int = transactions.size - 1 - position
+
+        val transaction = transactions[pos]
         val context = holder.amount.context
 
         if(transaction.description.isNotEmpty()){

@@ -60,9 +60,20 @@ class BudgetActivity : AppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                var p0 = -1
+                var position = viewHolder.adapterPosition
+                var p0 = 0
                 var cnt = -1
+
+                var tot = 0
+
+                for (ds in transactions){
+                    val  model = ds
+                    if (model.amount>0){
+                        tot += 1
+                    }
+                }
+
+                position = tot - position
 
                 var tr: ArrayList<Transaction> = ArrayList()
 

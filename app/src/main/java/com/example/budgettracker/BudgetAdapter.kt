@@ -1,18 +1,15 @@
 package com.example.budgettracker
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
-import com.example.budgettracker.databinding.TransactionLayoutBinding
 import java.text.SimpleDateFormat
+
 
 class BudgetAdapter(private var transactions: List<Transaction>) :
     RecyclerView.Adapter<BudgetAdapter.HolderBudget>() {
@@ -30,7 +27,9 @@ class BudgetAdapter(private var transactions: List<Transaction>) :
 
     override fun onBindViewHolder(holder: HolderBudget, position: Int) {
 
-        val budget = transactions[position]
+        val pos: Int = transactions.size - 1 - position
+
+        val budget = transactions[pos]
         val context = holder.amount.context
 
         holder.amount.text = "₹%.2f".format(Math.abs(budget.amount))
