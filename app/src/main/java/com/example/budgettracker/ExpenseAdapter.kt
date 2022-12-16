@@ -11,47 +11,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 
 class ExpenseAdapter(private var transactions: List<Transaction>) :
-    RecyclerView.Adapter<ExpenseAdapter.TransactionHolder>() {
+    RecyclerView.Adapter<ExpenseAdapter.ExpenseHolder>() {
 
-    class TransactionHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ExpenseHolder(view: View) : RecyclerView.ViewHolder(view){
         val label : TextView = view.findViewById(R.id.label)
         val amount : TextView = view.findViewById(R.id.amount)
-        val tag : TextView = view.findViewById(R.id.tag)
-        val loy : RelativeLayout = view.findViewById(R.id.loy)
+        val date1 : TextView = view.findViewById(R.id.date1)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.transaction_layout,parent,false)
-        return TransactionHolder(view)
+        return ExpenseHolder(view)
     }
 
-    override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
-        val transaction = transactions[position]
+    override fun onBindViewHolder(holder: ExpenseHolder, position: Int) {
+        val expense = transactions[position]
         val context = holder.amount.context
 
-        if(transaction.amount <0){
-            holder.amount.text = "- ₹%.2f".format(Math.abs(transaction.amount))
+
+            holder.amount.text = "- ₹%.2f".format(Math.abs(expense.amount))
             holder.amount.setTextColor(ContextCompat.getColor(context,R.color.red))
 
-            holder.label.text = transaction.label
-            holder.tag.text = transaction.description
+            holder.label.text = expense.label
 
-            if(transaction.description.isNotEmpty()){
-                holder.tag.visibility = View.VISIBLE
-            }
+
 
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, DetailedActivity::class.java)
-                intent.putExtra("transaction", transaction)
+                intent.putExtra("transaction", expense)
                 context.startActivity(intent)
                 Animatoo.animateZoom(context)
             }
-
-            holder.loy.visibility = View.VISIBLE
-        }
-        else{
-            holder.loy.visibility = View.GONE
-        }
 
 
 

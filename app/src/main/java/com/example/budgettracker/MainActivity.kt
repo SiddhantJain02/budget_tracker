@@ -23,6 +23,7 @@ import com.anychart.AnyChartView
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.budgettracker.R.color
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
@@ -117,25 +118,24 @@ class MainActivity : AppCompatActivity() {
 
 
 
-           /* budget.setOnClickListener {
+            budget.setOnClickListener {
                 val intent = Intent(this, BudgetActivity::class.java)
                 startActivity(intent)
                 Animatoo.animateSlideRight(this)
-            }*/
+            }
 
 
-        /* expense.setOnClickListener {
+         expense.setOnClickListener {
             val intent = Intent(this, ExpenseActivity::class.java)
             startActivity(intent)
             Animatoo.animateSlideLeft(this)
-        }*/
+        }
 
     }
 
     private fun fetchAll(){
         GlobalScope.launch {
             transactions = db.transactionDao().getAll()
-
 
             runOnUiThread {
                 updateDashboard()
@@ -223,6 +223,12 @@ class MainActivity : AppCompatActivity() {
 
 
         balance.text = "₹ %.2f".format(totalAmount)
+        if(totalAmount > 0){
+            balance.setTextColor(ContextCompat.getColor(this,R.color.green))
+        }
+        else if(totalAmount < 0){
+            balance.setTextColor(ContextCompat.getColor(this,R.color.red))
+        }
         left2.text = "₹ %.2f".format(budgetAmount)
         right2.text = "₹ %.2f".format(expenseAmount)
 
@@ -270,8 +276,8 @@ class MainActivity : AppCompatActivity() {
         snackbar.setAction("Undo"){
             undoDelete()
         }
-            .setActionTextColor(ContextCompat.getColor(this,R.color.red))
-            .setTextColor(ContextCompat.getColor(this,R.color.black))
+            .setActionTextColor(ContextCompat.getColor(this, color.red))
+            .setTextColor(ContextCompat.getColor(this, R.color.white))
             .show()
     }
 
