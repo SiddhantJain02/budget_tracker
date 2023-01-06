@@ -39,6 +39,7 @@ import kotlinx.android.synthetic.main.popup.*
 import kotlinx.android.synthetic.main.popup.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.Calendar.getInstance
 
 
 class MainActivity : AppCompatActivity() {
@@ -141,22 +142,49 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             transactions = db.transactionDao().getAll()
 
+            var tr: ArrayList<Transaction> = ArrayList()
+
+            for (ds in transactions){
+                val  model = ds
+
+                val month = ds.date.month
+                val m = getInstance().time.month
+
+                if (month==m){
+                    tr.add(model)
+                }
+            }
+
             runOnUiThread {
                 updateDashboard()
-                transactionAdapter.setData(transactions)
+                transactionAdapter.setData(tr)
             }
         }
 
     }
 
     private fun updateDashboard(){
-        val totalAmount:Double = transactions.map { it.amount }.sum()
-        var totalTravel:Float = transactions.filter { it.description=="Travel" }.map { it.amount }.sum().unaryMinus().toFloat()
-        var totalFood:Float = transactions.filter { it.description=="Food" }.map { it.amount }.sum().unaryMinus().toFloat()
-        var totalNecessity:Float = transactions.filter { it.description=="Necessity" }.map { it.amount }.sum().unaryMinus().toFloat()
-        var totalClothing:Float = transactions.filter { it.description=="Clothing" }.map { it.amount }.sum().unaryMinus().toFloat()
-        var totalEntertainment:Float = transactions.filter { it.description=="Entertainment" }.map { it.amount }.sum().unaryMinus().toFloat()
-        val budgetAmount:Double = transactions.filter { it.amount>0 }.map { it.amount }.sum()
+
+        var tr: ArrayList<Transaction> = ArrayList()
+
+        for (ds in transactions){
+            val  model = ds
+
+            val month = ds.date.month
+            val m = getInstance().time.month
+
+            if (month==m){
+                tr.add(model)
+            }
+        }
+
+        val totalAmount:Double = tr.map { it.amount }.sum()
+        var totalTravel:Float = tr.filter { it.description=="Travel" }.map { it.amount }.sum().unaryMinus().toFloat()
+        var totalFood:Float = tr.filter { it.description=="Food" }.map { it.amount }.sum().unaryMinus().toFloat()
+        var totalNecessity:Float = tr.filter { it.description=="Necessity" }.map { it.amount }.sum().unaryMinus().toFloat()
+        var totalClothing:Float = tr.filter { it.description=="Clothing" }.map { it.amount }.sum().unaryMinus().toFloat()
+        var totalEntertainment:Float = tr.filter { it.description=="Entertainment" }.map { it.amount }.sum().unaryMinus().toFloat()
+        val budgetAmount:Double = tr.filter { it.amount>0 }.map { it.amount }.sum()
         val expenseAmount:Double = totalAmount - budgetAmount
 
         val entries: ArrayList<PieEntry> = ArrayList()
@@ -269,7 +297,21 @@ class MainActivity : AppCompatActivity() {
 
             runOnUiThread {
                 updateDashboard()
-                transactionAdapter.setData(transactions)
+
+                var tr: ArrayList<Transaction> = ArrayList()
+
+                for (ds in transactions){
+                    val  model = ds
+
+                    val month = ds.date.month
+                    val m = getInstance().time.month
+
+                    if (month==m){
+                        tr.add(model)
+                    }
+                }
+
+                transactionAdapter.setData(tr)
             }
         }
     }
@@ -288,7 +330,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun deleteTransaction(transaction: Transaction){
         deletedTransaction = transaction
-        oldTransactions = transactions
+
+        var tr: ArrayList<Transaction> = ArrayList()
+
+        for (ds in transactions){
+            val  model = ds
+
+            val month = ds.date.month
+            val m = getInstance().time.month
+
+            if (month==m){
+                tr.add(model)
+            }
+        }
+
+        oldTransactions = tr
 
         GlobalScope.launch {
             db.transactionDao().delete(transaction)
@@ -297,7 +353,21 @@ class MainActivity : AppCompatActivity() {
             transactions = transactions.filter { it.id != transaction.id}
             runOnUiThread {
                 updateDashboard()
-                transactionAdapter.setData(transactions)
+
+                var tr: ArrayList<Transaction> = ArrayList()
+
+                for (ds in transactions){
+                    val  model = ds
+
+                    val month = ds.date.month
+                    val m = getInstance().time.month
+
+                    if (month==m){
+                        tr.add(model)
+                    }
+                }
+
+                transactionAdapter.setData(tr)
                 showSnackbar()
             }
         }
@@ -313,7 +383,19 @@ class MainActivity : AppCompatActivity() {
 
             runOnUiThread {
                 updateDashboard()
-                transactionAdapter.setData(transactions)
+                var tr: ArrayList<Transaction> = ArrayList()
+
+                for (ds in transactions){
+                    val  model = ds
+
+                    val month = ds.date.month
+                    val m = getInstance().time.month
+
+                    if (month==m){
+                        tr.add(model)
+                    }
+                }
+                transactionAdapter.setData(tr)
             }
         }
 
