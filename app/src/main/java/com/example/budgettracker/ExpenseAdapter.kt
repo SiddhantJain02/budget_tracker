@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import java.text.SimpleDateFormat
 
 class ExpenseAdapter(private var transactions: List<Transaction>) :
     RecyclerView.Adapter<ExpenseAdapter.ExpenseHolder>() {
@@ -36,6 +37,9 @@ class ExpenseAdapter(private var transactions: List<Transaction>) :
             holder.amount.setTextColor(ContextCompat.getColor(context,R.color.red))
 
             holder.label.text = expense.label
+
+        val dateFormated = SimpleDateFormat("EEE, MMM d, ''yy").format(expense.date)
+        holder.date1.text = dateFormated
 
 
 

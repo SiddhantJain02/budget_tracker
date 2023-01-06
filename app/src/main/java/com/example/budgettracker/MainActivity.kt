@@ -150,7 +150,10 @@ class MainActivity : AppCompatActivity() {
                 val month = ds.date.month
                 val m = getInstance().time.month
 
-                if (month==m){
+                val year = ds.date.year
+                val y = getInstance().time.year
+
+                if (month==m && year==y){
                     tr.add(model)
                 }
             }
@@ -173,7 +176,10 @@ class MainActivity : AppCompatActivity() {
             val month = ds.date.month
             val m = getInstance().time.month
 
-            if (month==m){
+            val year = ds.date.year
+            val y = getInstance().time.year
+
+            if (month==m && year==y){
                 tr.add(model)
             }
         }
@@ -306,7 +312,10 @@ class MainActivity : AppCompatActivity() {
                     val month = ds.date.month
                     val m = getInstance().time.month
 
-                    if (month==m){
+                    val year = ds.date.year
+                    val y = getInstance().time.year
+
+                    if (month==m && year==y){
                         tr.add(model)
                     }
                 }
@@ -339,7 +348,10 @@ class MainActivity : AppCompatActivity() {
             val month = ds.date.month
             val m = getInstance().time.month
 
-            if (month==m){
+            val year = ds.date.year
+            val y = getInstance().time.year
+
+            if (month==m && year==y){
                 tr.add(model)
             }
         }
@@ -362,7 +374,10 @@ class MainActivity : AppCompatActivity() {
                     val month = ds.date.month
                     val m = getInstance().time.month
 
-                    if (month==m){
+                    val year = ds.date.year
+                    val y = getInstance().time.year
+
+                    if (month==m && year==y){
                         tr.add(model)
                     }
                 }
@@ -391,10 +406,14 @@ class MainActivity : AppCompatActivity() {
                     val month = ds.date.month
                     val m = getInstance().time.month
 
-                    if (month==m){
+                    val year = ds.date.year
+                    val y = getInstance().time.year
+
+                    if (month==m && year==y){
                         tr.add(model)
                     }
                 }
+
                 transactionAdapter.setData(tr)
             }
         }
