@@ -57,8 +57,10 @@ class BudgetAdapter(private var transactions: List<Transaction>) :
         holder.num.text = budget.date.day.toString()
         holder.date1.visibility = View.GONE
         holder.tag.text = budget.description
-        val i: Int = budget.date.toString().indexOf(' ')
-        holder.day.text = budget.date.toString().substring(0, i)
+        val str = budget.date.toString()
+        val sp = str.split(" ").toTypedArray()
+        holder.day.text = sp[0]
+        holder.num.text = sp[2]
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailedActivity::class.java)

@@ -1,7 +1,6 @@
 package com.example.budgettracker
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,10 +59,11 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
         val dateFormated = SimpleDateFormat("EEE, MMM d, ''yy").format(transaction.date)
         holder.label.text = transaction.label
         holder.tag.text = transaction.description
-        holder.num.text = transaction.date.day.toString()
         holder.date1.visibility = View.GONE
-        val i: Int = transaction.date.toString().indexOf(' ')
-        holder.day.text = transaction.date.toString().substring(0, i)
+        val str = transaction.date.toString()
+        val sp = str.split(" ").toTypedArray()
+        holder.day.text = sp[0]
+        holder.num.text = sp[2]
         //holder.day.text = transaction.date.toString()
 
 

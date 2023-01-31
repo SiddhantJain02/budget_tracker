@@ -40,7 +40,7 @@
                 >
                 <TextView
                     android:id="@+id/num"
-                    android:fontFamily="sans-serif-condensed"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -133,7 +133,7 @@
                         android:layout_marginBottom="10dp"
                         android:backgroundTint="#1C1A1A"
                         android:foregroundGravity="center"
-                        app:cardCornerRadius="12dp">
+                        app:cardCornerRadius="8dp">
 
                         <TextView
                             android:id="@+id/tag"

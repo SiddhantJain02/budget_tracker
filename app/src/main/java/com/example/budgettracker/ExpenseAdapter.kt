@@ -58,8 +58,10 @@ class ExpenseAdapter(private var transactions: List<Transaction>) :
         holder.num.text = expense.date.day.toString()
         holder.date1.visibility = View.GONE
         holder.tag.text = expense.description
-        val i: Int = expense.date.toString().indexOf(' ')
-        holder.day.text = expense.date.toString().substring(0, i)
+        val str = expense.date.toString()
+        val sp = str.split(" ").toTypedArray()
+        holder.day.text = sp[0]
+        holder.num.text = sp[2]
 
 
 
