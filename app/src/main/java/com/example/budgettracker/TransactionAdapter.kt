@@ -1,6 +1,7 @@
 package com.example.budgettracker
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
-import com.google.android.material.card.MaterialCardView
 import java.text.SimpleDateFormat
 
 class TransactionAdapter(private var transactions: List<Transaction>) :
@@ -19,6 +19,8 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
         val amount : TextView = view.findViewById(R.id.amount)
         val tag : TextView = view.findViewById(R.id.tag)
         val date1 : TextView = view.findViewById(R.id.date1)
+        val num : TextView = view.findViewById(R.id.num)
+        val day : TextView = view.findViewById(R.id.day)
 
     }
 
@@ -58,7 +60,11 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
         val dateFormated = SimpleDateFormat("EEE, MMM d, ''yy").format(transaction.date)
         holder.label.text = transaction.label
         holder.tag.text = transaction.description
-        holder.date1.text = dateFormated
+        holder.num.text = transaction.date.day.toString()
+        holder.date1.visibility = View.GONE
+        val i: Int = transaction.date.toString().indexOf(' ')
+        holder.day.text = transaction.date.toString().substring(0, i)
+        //holder.day.text = transaction.date.toString()
 
 
 
