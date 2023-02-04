@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:id="@+id/autoComplete"
-                android:background="@color/white"
+                android:background="#1C1A1A"
                 android:inputType="none"
                 android:layout_weight="1"
                 android:textColor="#FFFFFF"

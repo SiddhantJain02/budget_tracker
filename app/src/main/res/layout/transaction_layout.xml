@@ -60,6 +60,11 @@
                         android:textColor="@color/white2"
                         android:textSize="40sp"/>
 
+                    <View
+                        android:layout_width="50dp"
+                        android:layout_height="2dp"
+                        android:background="#c0c0c0"/>
+
                     <TextView
                         android:id="@+id/day"
                         android:fontFamily="sans-serif-condensed"

@@ -280,7 +280,7 @@ class MainActivity : AppCompatActivity() {
         mpChartView.setCenterTextSize(18f)
         mpChartView.setCenterTextColor(Color.WHITE)
         mpChartView.getDescription().setEnabled(false)
-        mpChartView.setHoleRadius(60f)
+        mpChartView.setHoleRadius(45f)
         mpChartView.setTransparentCircleColor(Color.BLACK)
         mpChartView.setHoleColor(Color.TRANSPARENT)
         val l: Legend = mpChartView.getLegend()

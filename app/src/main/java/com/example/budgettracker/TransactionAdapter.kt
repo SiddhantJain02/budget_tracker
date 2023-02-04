@@ -64,6 +64,16 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
         val sp = str.split(" ").toTypedArray()
         holder.day.text = sp[0]
         holder.num.text = sp[2]
+
+        if(sp[0] == "Sun"){
+            holder.day.setTextColor(ContextCompat.getColor(context, R.color.red3))
+        }
+        else if(sp[0] == "Sat"){
+            holder.day.setTextColor(ContextCompat.getColor(context, R.color.blue))
+        }
+        else{
+            holder.day.setTextColor(ContextCompat.getColor(context, R.color.white2))
+        }
         //holder.day.text = transaction.date.toString()
 
 
