@@ -278,7 +278,6 @@
                 android:layout_height="30dp"
                 android:paddingTop="5dp"
                 android:layout_marginEnd="5dp"
-
                 android:backgroundTint="@color/red"
                 android:layout_gravity="right"
                 android:background="@drawable/ic_delete" />

@@ -136,6 +136,12 @@ class MainActivity : AppCompatActivity() {
             Animatoo.animateSlideLeft(this)
         }
 
+        totbal.setOnClickListener {
+            val intent = Intent(this, BarChartActivity::class.java)
+            startActivity(intent)
+            Animatoo.animateSlideDown(this)
+        }
+
     }
 
     private fun fetchAll(){
