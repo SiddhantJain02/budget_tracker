@@ -53,7 +53,25 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
             holder.amount.text = "- ₹%.2f".format(Math.abs(transaction.amount))
             holder.amount.setTextColor(ContextCompat.getColor(context, R.color.red))
             //holder.tag.setBackgroundColor(ContextCompat.getColor(context, R.color.red2))
-            holder.tag.setBackgroundResource(R.drawable.bg_tag2)
+            holder.tag.setTextColor(ContextCompat.getColor(context, R.color.black))
+            if (transaction.description=="Food"){
+                holder.tag.setBackgroundResource(R.drawable.food_bg)
+            }
+            else if (transaction.description=="Necessity"){
+                holder.tag.setBackgroundResource(R.drawable.nes_bg)
+            }
+            else if (transaction.description=="Clothing"){
+                holder.tag.setBackgroundResource(R.drawable.cloth_bg)
+            }
+            else if (transaction.description=="Travel"){
+                holder.tag.setBackgroundResource(R.drawable.travel_bg)
+            }
+            else if (transaction.description=="Entertainment"){
+                holder.tag.setBackgroundResource(R.drawable.ent_bg)
+            }
+            else{
+                holder.tag.setBackgroundResource(R.drawable.bg_tag2)
+            }
         }
 
         val dateFormated = SimpleDateFormat("EEE, MMM d, ''yy").format(transaction.date)
@@ -75,11 +93,6 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
             holder.day.setTextColor(ContextCompat.getColor(context, R.color.white2))
         }
         //holder.day.text = transaction.date.toString()
-
-
-
-
-
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailedActivity::class.java)

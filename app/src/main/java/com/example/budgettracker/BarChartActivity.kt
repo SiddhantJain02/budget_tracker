@@ -17,6 +17,8 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.LargeValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import kotlinx.android.synthetic.main.activity_bar_chart.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -56,10 +58,30 @@ class BarChartActivity : AppCompatActivity() {
             val n = Calendar.getInstance().time.toString().split(" ").toTypedArray()[2].toInt()
 
             populateGraphData(n,tr)
+            updateData(n,tr)
         }
 
+    }
 
+    private fun updateData(n: Int, tr: ArrayList<Transaction>) {
+        val expAmount:Double = tr.filter { it.amount<0 }.map { it.amount }.sum()
+        val totalAmount:Double = tr.map { it.amount }.sum()
 
+        val avgAmount = expAmount/n
+        var bugAmount = totalAmount/(30-n)
+
+        avg2.text = "₹ %.2f".format(avgAmount)
+
+        val m = Calendar.getInstance().time.toString().split(" ").toTypedArray()[1]
+
+        if (m=="Jan" || m=="Mar" || m=="May" || m=="Jul" || m=="Aug" || m=="Oct" || m=="Dec"){
+            bugAmount = totalAmount/(31-n)
+        }
+        else if (m=="Feb"){
+            bugAmount = totalAmount/(28-n)
+        }
+
+        bud2.text = "₹ %.2f".format(bugAmount)
 
     }
 
@@ -236,7 +258,7 @@ class BarChartActivity : AppCompatActivity() {
 
         val leftAxis = barChartView.getAxisLeft()
         leftAxis.setValueFormatter(LargeValueFormatter())
-        leftAxis.setDrawGridLines(false)
+        leftAxis.setDrawGridLines(true)
         leftAxis.setSpaceTop(1f)
         leftAxis.setAxisMinimum(0f)
         leftAxis.textColor = Color.WHITE

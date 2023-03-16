@@ -52,7 +52,25 @@ class PrePreExpenseAdapter(private var transactions: List<Transaction>) :
         holder.amount.text = "- ₹%.2f".format(Math.abs(expense.amount))
         holder.amount.setTextColor(ContextCompat.getColor(context, R.color.red))
         //holder.tag.setBackgroundColor(ContextCompat.getColor(context, R.color.red2))
-        holder.tag.setBackgroundResource(R.drawable.bg_tag2)
+        holder.tag.setTextColor(ContextCompat.getColor(context, R.color.black))
+        if (expense.description=="Food"){
+            holder.tag.setBackgroundResource(R.drawable.food_bg)
+        }
+        else if (expense.description=="Necessity"){
+            holder.tag.setBackgroundResource(R.drawable.nes_bg)
+        }
+        else if (expense.description=="Clothing"){
+            holder.tag.setBackgroundResource(R.drawable.cloth_bg)
+        }
+        else if (expense.description=="Travel"){
+            holder.tag.setBackgroundResource(R.drawable.travel_bg)
+        }
+        else if (expense.description=="Entertainment"){
+            holder.tag.setBackgroundResource(R.drawable.ent_bg)
+        }
+        else{
+            holder.tag.setBackgroundResource(R.drawable.bg_tag2)
+        }
 
         val dateFormated = SimpleDateFormat("EEE, MMM d, ''yy").format(expense.date)
         holder.date1.text = dateFormated

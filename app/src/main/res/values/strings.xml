@@ -9,5 +9,6 @@
         <item>Budget</item>
         <item>Travel</item>
         <item>Entertainment</item>
+        <item>Credit</item>
     </string-array>
 </resources>

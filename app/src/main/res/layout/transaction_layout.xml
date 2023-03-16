@@ -9,7 +9,7 @@
     android:layout_marginRight="10dp"
     android:orientation="vertical"
     android:id="@+id/loy"
-    android:clickable="true"
+    android:backgroundTint="@color/black"
     android:background="@color/black">
 
     <com.google.android.material.card.MaterialCardView

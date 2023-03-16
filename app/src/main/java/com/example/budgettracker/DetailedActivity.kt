@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.room.Room
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
@@ -39,6 +40,23 @@ class DetailedActivity : AppCompatActivity() {
         autoComplete1.setText(transaction.description)
         date = transaction.date
         detailDate.setText(dateFormated)
+
+        /*if (transaction.description=="Food"){
+            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c1))
+        }
+        else if (transaction.description=="Necessity"){
+            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c2))
+        }
+        else if (transaction.description=="Clothing"){
+            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c3))
+        }
+        else if (transaction.description=="Travel"){
+            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c4))
+        }
+        else if (transaction.description=="Entertainment"){
+            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c5))
+        }*/
+
 
 
         val tags = resources.getStringArray(R.array.tags)
@@ -96,6 +114,7 @@ class DetailedActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         super.onBackPressed()
         finish()

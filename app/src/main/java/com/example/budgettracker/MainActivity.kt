@@ -123,14 +123,14 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            budget.setOnClickListener {
+            bud1.setOnClickListener {
                 val intent = Intent(this, BudgetActivity::class.java)
                 startActivity(intent)
                 Animatoo.animateSlideRight(this)
             }
 
 
-         expense.setOnClickListener {
+         exp1.setOnClickListener {
             val intent = Intent(this, ExpenseActivity::class.java)
             startActivity(intent)
             Animatoo.animateSlideLeft(this)
@@ -233,7 +233,7 @@ class MainActivity : AppCompatActivity() {
 
         val dataSet = PieDataSet(entries,"")
         mpChartView.setCenterText("Expenses\n" + "₹ %.1f".format(expenseAmount.unaryMinus()))
-        dataSet.colors = colors
+        dataSet.setColors(ContextCompat.getColor(this, R.color.c5), ContextCompat.getColor(this, R.color.c2), ContextCompat.getColor(this, R.color.c3),ContextCompat.getColor(this, R.color.c1), ContextCompat.getColor(this, R.color.c4))
 
         val data = PieData(dataSet)
         data.setDrawValues(true)
@@ -248,8 +248,27 @@ class MainActivity : AppCompatActivity() {
 
         setupPieChart()
 
-        if(!transactions.isEmpty()){
+        var tr1: ArrayList<Transaction> = ArrayList()
+
+        for (ds in transactions){
+            val  model = ds
+
+            val month = ds.date.month
+            val m = getInstance().time.month
+
+            val year = ds.date.year
+            val y = getInstance().time.year
+
+            if (month==m && year==y){
+                tr1.add(model)
+            }
+        }
+
+        if(!tr1.isEmpty()){
             deleteallbtn.setVisibility(View.VISIBLE)
+        }
+        else{
+            deleteallbtn.setVisibility(View.GONE)
         }
 
         if(totalFood == 0f && totalTravel==0f && totalEntertainment==0f && totalClothing==0f && totalNecessity==0f){
