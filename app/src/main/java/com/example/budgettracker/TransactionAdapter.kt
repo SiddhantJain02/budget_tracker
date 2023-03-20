@@ -4,7 +4,9 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
@@ -20,6 +22,7 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
         val date1 : TextView = view.findViewById(R.id.date1)
         val num : TextView = view.findViewById(R.id.num)
         val day : TextView = view.findViewById(R.id.day)
+        val imgPng : ImageView = view.findViewById(R.id.imgPng)
 
     }
 
@@ -47,6 +50,8 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
             holder.amount.setTextColor(ContextCompat.getColor(context,R.color.green))
             //holder.tag.setBackgroundColor(ContextCompat.getColor(context, R.color.green2))
             holder.tag.setBackgroundResource(R.drawable.bg_tag)
+            holder.imgPng.setImageResource(R.drawable.money2)
+            holder.imgPng.visibility = View.VISIBLE
 
         }
         else{
@@ -56,21 +61,32 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
             holder.tag.setTextColor(ContextCompat.getColor(context, R.color.black))
             if (transaction.description=="Food"){
                 holder.tag.setBackgroundResource(R.drawable.food_bg)
+                holder.imgPng.setImageResource(R.drawable.dish2)
+                holder.imgPng.visibility = View.VISIBLE
             }
             else if (transaction.description=="Necessity"){
                 holder.tag.setBackgroundResource(R.drawable.nes_bg)
+                holder.imgPng.setImageResource(R.drawable.expectation2)
+                holder.imgPng.visibility = View.VISIBLE
             }
             else if (transaction.description=="Clothing"){
                 holder.tag.setBackgroundResource(R.drawable.cloth_bg)
+                holder.imgPng.setImageResource(R.drawable.laundry2)
+                holder.imgPng.visibility = View.VISIBLE
             }
             else if (transaction.description=="Travel"){
                 holder.tag.setBackgroundResource(R.drawable.travel_bg)
+                holder.imgPng.setImageResource(R.drawable.travel2)
+                holder.imgPng.visibility = View.VISIBLE
             }
             else if (transaction.description=="Entertainment"){
                 holder.tag.setBackgroundResource(R.drawable.ent_bg)
+                holder.imgPng.setImageResource(R.drawable.cinema2)
+                holder.imgPng.visibility = View.VISIBLE
             }
             else{
                 holder.tag.setBackgroundResource(R.drawable.bg_tag2)
+                holder.imgPng.visibility = View.GONE
             }
         }
 
@@ -101,6 +117,7 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
             Animatoo.animateZoom(context)
         }
     }
+
 
     override fun getItemCount(): Int {
         return transactions.size

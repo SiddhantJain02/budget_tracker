@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,7 @@ class BudgetAdapter(private var transactions: List<Transaction>) :
         val num : TextView = view.findViewById(R.id.num)
         val day : TextView = view.findViewById(R.id.day)
         val tag : TextView = view.findViewById(R.id.tag)
+        val imgPng : ImageView = view.findViewById(R.id.imgPng)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderBudget {
@@ -39,6 +41,8 @@ class BudgetAdapter(private var transactions: List<Transaction>) :
         holder.amount.text = "₹%.2f".format(Math.abs(budget.amount))
         holder.label.text = budget.label
         holder.amount.setTextColor(ContextCompat.getColor(context,R.color.green))
+        holder.imgPng.setImageResource(R.drawable.money2)
+        holder.imgPng.visibility = View.VISIBLE
 
         if(budget.description.isNotEmpty()){
             holder.tag.visibility = View.VISIBLE

@@ -41,21 +41,24 @@ class DetailedActivity : AppCompatActivity() {
         date = transaction.date
         detailDate.setText(dateFormated)
 
-        /*if (transaction.description=="Food"){
-            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c1))
+        if (transaction.description=="Food"){
+            imgBc.setImageResource(R.drawable.dish2)
         }
         else if (transaction.description=="Necessity"){
-            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c2))
+            imgBc.setImageResource(R.drawable.expectation2)
         }
         else if (transaction.description=="Clothing"){
-            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c3))
+            imgBc.setImageResource(R.drawable.laundry2)
         }
         else if (transaction.description=="Travel"){
-            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c4))
+            imgBc.setImageResource(R.drawable.travel2)
         }
         else if (transaction.description=="Entertainment"){
-            roomView.setBackgroundColor(ContextCompat.getColor(this, R.color.c5))
-        }*/
+            imgBc.setImageResource(R.drawable.cinema2)
+        }
+        else if (transaction.description=="Budget"){
+            imgBc.setImageResource(R.drawable.money2)
+        }
 
 
 

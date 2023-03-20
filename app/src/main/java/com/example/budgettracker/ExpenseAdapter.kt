@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -21,6 +22,7 @@ class ExpenseAdapter(private var transactions: List<Transaction>) :
         val num : TextView = view.findViewById(R.id.num)
         val day : TextView = view.findViewById(R.id.day)
         val tag : TextView = view.findViewById(R.id.tag)
+        val imgPng : ImageView = view.findViewById(R.id.imgPng)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseHolder {
@@ -54,21 +56,32 @@ class ExpenseAdapter(private var transactions: List<Transaction>) :
         holder.tag.setTextColor(ContextCompat.getColor(context, R.color.black))
         if (expense.description=="Food"){
             holder.tag.setBackgroundResource(R.drawable.food_bg)
+            holder.imgPng.setImageResource(R.drawable.dish2)
+            holder.imgPng.visibility = View.VISIBLE
         }
         else if (expense.description=="Necessity"){
             holder.tag.setBackgroundResource(R.drawable.nes_bg)
+            holder.imgPng.setImageResource(R.drawable.expectation2)
+            holder.imgPng.visibility = View.VISIBLE
         }
         else if (expense.description=="Clothing"){
             holder.tag.setBackgroundResource(R.drawable.cloth_bg)
+            holder.imgPng.setImageResource(R.drawable.laundry2)
+            holder.imgPng.visibility = View.VISIBLE
         }
         else if (expense.description=="Travel"){
             holder.tag.setBackgroundResource(R.drawable.travel_bg)
+            holder.imgPng.setImageResource(R.drawable.travel2)
+            holder.imgPng.visibility = View.VISIBLE
         }
         else if (expense.description=="Entertainment"){
             holder.tag.setBackgroundResource(R.drawable.ent_bg)
+            holder.imgPng.setImageResource(R.drawable.cinema2)
+            holder.imgPng.visibility = View.VISIBLE
         }
         else{
             holder.tag.setBackgroundResource(R.drawable.bg_tag2)
+            holder.imgPng.visibility = View.GONE
         }
 
         val dateFormated = SimpleDateFormat("EEE, MMM d, ''yy").format(expense.date)

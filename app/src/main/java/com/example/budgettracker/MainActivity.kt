@@ -1,27 +1,18 @@
 package com.example.budgettracker
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.opengl.Visibility
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.anychart.AnyChart
-import com.anychart.AnyChartView
-import com.anychart.chart.common.dataentry.DataEntry
-import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.budgettracker.R.color
 import com.github.mikephil.charting.animation.Easing
@@ -31,11 +22,8 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.popup.*
 import kotlinx.android.synthetic.main.popup.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -200,40 +188,38 @@ class MainActivity : AppCompatActivity() {
         val expenseAmount:Double = totalAmount - budgetAmount
 
         val entries: ArrayList<PieEntry> = ArrayList()
+        val colors: ArrayList<Int> = ArrayList()
 
         if(totalEntertainment != 0f){
             entries.add(PieEntry(totalEntertainment, "Entertainment"))
+            colors.add(ContextCompat.getColor(this, R.color.c5))
         }
 
         if(totalNecessity != 0f){
             entries.add(PieEntry(totalNecessity, "Necessity"))
+            colors.add(ContextCompat.getColor(this, R.color.c2))
         }
 
         if(totalClothing != 0f){
             entries.add(PieEntry(totalClothing, "Clothing"))
+            colors.add(ContextCompat.getColor(this, R.color.c3))
         }
 
         if(totalFood != 0f){
             entries.add(PieEntry(totalFood, "Food"))
+            colors.add(ContextCompat.getColor(this, R.color.c1))
         }
 
         if(totalTravel != 0f){
             entries.add(PieEntry(totalTravel, "Travel"))
-        }
-
-
-        val colors: ArrayList<Int> = ArrayList()
-        for (color in ColorTemplate.MATERIAL_COLORS) {
-            colors.add(color)
-        }
-
-        for (color in ColorTemplate.VORDIPLOM_COLORS) {
-            colors.add(color)
+            colors.add(ContextCompat.getColor(this, R.color.c4))
         }
 
         val dataSet = PieDataSet(entries,"")
         mpChartView.setCenterText("Expenses\n" + "₹ %.1f".format(expenseAmount.unaryMinus()))
-        dataSet.setColors(ContextCompat.getColor(this, R.color.c5), ContextCompat.getColor(this, R.color.c2), ContextCompat.getColor(this, R.color.c3),ContextCompat.getColor(this, R.color.c1), ContextCompat.getColor(this, R.color.c4))
+
+        dataSet.setColors(colors)
+        //dataSet.setColors(ContextCompat.getColor(this, R.color.c5), ContextCompat.getColor(this, R.color.c2), ContextCompat.getColor(this, R.color.c3),ContextCompat.getColor(this, R.color.c1), ContextCompat.getColor(this, R.color.c4))
 
         val data = PieData(dataSet)
         data.setDrawValues(true)
