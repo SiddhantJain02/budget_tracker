@@ -48,36 +48,56 @@ class MySMSReceiver : BroadcastReceiver() {
                     amount = amount.replace(",", "")
                 }
 
-                val name = ""
-
-                val k = str.indexOf("to")
-                val m = str.indexOf("Ref")
-                val l = str.substring(k + 2, m - 1)
-
                 var d = amount.toDouble()
-                Toast.makeText(context, "Transaction to " + l+" of "+d.toString(), Toast.LENGTH_SHORT).show()
+
+
+                var name = ""
+
+                val patternx = Pattern.compile("credited")
+                val matcherx = patternx.matcher(str)
+                if (matcherx.find()){
+                    val k = str.indexOf("(")
+                    val m = str.indexOf(")")
+                    val l = str.substring(k + 1, m)
+                    name = l
+                    Toast.makeText(context, d.toString()+" CREDITED from "+name, Toast.LENGTH_SHORT).show()
+                }
+
+                else{
+                    val k = str.indexOf("to")
+                    val m = str.indexOf("Ref")
+                    val l = str.substring(k + 2, m - 1)
+                    name = l
+                    d = d.unaryMinus()
+                    Toast.makeText(context, d.unaryMinus().toString()+" DEBITED from "+name, Toast.LENGTH_SHORT).show()
+                }
+
+
+
                 val db = Room.databaseBuilder(context,
                     AppDatabase::class.java,
                     "transactions").allowMainThreadQueries().build()
 
-                d = d.unaryMinus()
 
-                val transaction = Transaction(0,l,d,"",Calendar.getInstance().time)
+
+
+                val transaction = Transaction(0,name,d,"",Calendar.getInstance().time)
 
                 GlobalScope.launch {
                     db.transactionDao().insertAll(transaction)
                 }
-
             }
 
-            /*else if (matcher2.find()) {
+
+
+            else if (matcher2.find()) {
 
                 val pattern = Pattern.compile("Rs")
                 val matcher = pattern.matcher(str)
                 var amount = ""
                 if (matcher.find()) {
                     val y = str.indexOf("Rs")
-                    val z = str.substring(y+2)
+                    val z = str.substring(y+3)
                     val twoWordsName: String =
                         z.substring(0, z.indexOf(' ', z.indexOf(' ')))
 
@@ -85,25 +105,41 @@ class MySMSReceiver : BroadcastReceiver() {
                     amount = amount.replace(",", "")
                 }
 
-                val name = ""
+                var d = amount.toDouble()
 
-                val k = str.indexOf("VPA")
-                val m = str.indexOf("@")
-                val l = str.substring(k + 1, m)
+                var name = ""
 
-                val d = amount.toDouble().unaryMinus()
-                Toast.makeText(context, d.toString() + " " + l, Toast.LENGTH_SHORT).show()
+
+                if (str[0] == 'Y'){
+                    val k = str.indexOf("credited")
+                    val m = str.indexOf("(")
+                    val l = str.substring(k + 12, m)
+                    name = l
+                    d = d.unaryMinus()
+                    Toast.makeText(context, d.unaryMinus().toString()+" DEBITED from "+name, Toast.LENGTH_SHORT).show()
+                }
+
+                else{
+                    val k = str.indexOf("VPA")
+                    val m = str.indexOf("(")
+                    val l = str.substring(k + 3, m)
+                    name = l
+                    Toast.makeText(context, d.toString()+" CREDITED from "+name, Toast.LENGTH_SHORT).show()
+                }
+
+
                 val db = Room.databaseBuilder(context,
                     AppDatabase::class.java,
                     "transactions").allowMainThreadQueries().build()
 
-                val transaction = Transaction(0,l,d,"",Calendar.getInstance().time)
+
+                val transaction = Transaction(0,name,d,"",Calendar.getInstance().time)
 
                 GlobalScope.launch {
                     db.transactionDao().insertAll(transaction)
                 }
 
-            }*/  // still in work
+            }
 
 
         }

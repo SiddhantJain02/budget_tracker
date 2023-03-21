@@ -92,6 +92,12 @@ class TransactionAdapter(private var transactions: List<Transaction>) :
 
         val dateFormated = SimpleDateFormat("EEE, MMM d, ''yy").format(transaction.date)
         holder.label.text = transaction.label
+        if (transaction.label.toString().length >= 15){
+            holder.label.setTextSize(16f)
+        }
+        else{
+            holder.label.setTextSize(20f)
+        }
         holder.tag.text = transaction.description
         holder.date1.visibility = View.GONE
         val str = transaction.date.toString()
