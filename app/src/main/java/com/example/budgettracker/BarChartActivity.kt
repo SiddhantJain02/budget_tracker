@@ -184,7 +184,7 @@ class BarChartActivity : AppCompatActivity() {
         }
 
 
-
+  //CHART COLOUR
         barDataSet1 = BarDataSet(yValueGroup1, "")
         barDataSet1.setColors(ContextCompat.getColor(this, R.color.c1), ContextCompat.getColor(this, R.color.c2), ContextCompat.getColor(this, R.color.c3),ContextCompat.getColor(this, R.color.c4), ContextCompat.getColor(this, R.color.c5))
         barDataSet1.label = "2016"

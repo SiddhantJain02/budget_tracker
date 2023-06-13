@@ -2,7 +2,7 @@ package com.example.budgettracker
 
 import androidx.room.TypeConverter
 import java.util.*
-
+//TYPE CONVERTOR
 
 class DateTypeConverter {
 

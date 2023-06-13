@@ -347,7 +347,7 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-
+//DELETE TRANSACTION
     private fun deleteTransaction(transaction: Transaction){
         deletedTransaction = transaction
 

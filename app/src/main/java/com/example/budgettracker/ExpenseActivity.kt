@@ -212,7 +212,7 @@ class ExpenseActivity : AppCompatActivity() {
             .setTextColor(ContextCompat.getColor(this, R.color.white))
             .show()
     }
-
+//DELETE TRANSACTION
     private fun deleteTransaction(transaction: Transaction){
         var tr: ArrayList<Transaction> = ArrayList()
 

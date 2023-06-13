@@ -92,7 +92,7 @@ class DetailedActivity : AppCompatActivity() {
             if (it!!.isNotEmpty())
                 amountLayout.error = null
         }
-
+//UPDATE BUTTON
         updateBtn.setOnClickListener {
             val label = labelInput.text.toString()
             val description = autoComplete1.text.toString()

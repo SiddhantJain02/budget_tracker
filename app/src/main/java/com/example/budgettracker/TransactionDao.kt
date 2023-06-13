@@ -1,7 +1,7 @@
 package com.example.budgettracker
 
 import androidx.room.*
-
+//TRANSACTION DATA
 @Dao
 interface TransactionDao {
    @Query("SELECT * from transactions")

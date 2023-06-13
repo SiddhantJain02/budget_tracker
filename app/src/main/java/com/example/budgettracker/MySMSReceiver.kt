@@ -27,7 +27,7 @@ class MySMSReceiver : BroadcastReceiver() {
 
             }
 
-            val pattern1 = Pattern.compile("SBIUPI")
+            val pattern1 = Pattern.compile("BOIUPI")
             val matcher1 = pattern1.matcher(x)
 
             val pattern2 = Pattern.compile("INDBNK")

@@ -41,7 +41,7 @@ class AddTransactionActivity : AppCompatActivity() {
             imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
 
-
+// value
         labelInput.addTextChangedListener {
             if (it!!.isNotEmpty())
                 labelLayout.error = null

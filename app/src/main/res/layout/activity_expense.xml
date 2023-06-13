@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Added Expense"
+        android:text="Added Expenses"
         android:id="@+id/expenseTital"
         android:textStyle="bold"
         android:textSize="20sp"

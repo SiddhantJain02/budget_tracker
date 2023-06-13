@@ -37,7 +37,7 @@
             android:textColorHint="#D5D5D5"
             android:background="@color/black"
             app:boxBackgroundColor="#1C1A1A"
-            android:hint="Label"
+            android:hint="LabeL"
             app:errorEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText

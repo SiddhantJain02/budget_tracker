@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import java.text.SimpleDateFormat
-
+//EXPENSE ADAPTER
 class ExpenseAdapter(private var transactions: List<Transaction>) :
     RecyclerView.Adapter<ExpenseAdapter.ExpenseHolder>() {
 

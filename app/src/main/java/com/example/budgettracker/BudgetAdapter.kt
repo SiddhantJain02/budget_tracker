@@ -37,7 +37,7 @@ class BudgetAdapter(private var transactions: List<Transaction>) :
 
         val budget = transactions[pos]
         val context = holder.amount.context
-
+//HOLDER CLASS
         holder.amount.text = "₹%.2f".format(Math.abs(budget.amount))
         holder.label.text = budget.label
         holder.amount.setTextColor(ContextCompat.getColor(context,R.color.green))

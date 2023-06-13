@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/remove"
         android:layout_marginTop="10dp"
-        android:text="Are You Sure ?"
+        android:text="Are you sure ?"
         android:textAlignment="center"
         android:textColor="#ACACAC"
         android:textSize="25sp"
