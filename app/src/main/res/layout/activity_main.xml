@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Total Balance"
+                    android:text="Total Balances"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="#FAFAFA"
